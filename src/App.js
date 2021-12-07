@@ -1,12 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import Practices from './components/Practices'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Hello World!</h2>
-      </header>
+    <div>
+      <Practices />
     </div>
   );
 }
