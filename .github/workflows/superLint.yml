@@ -10,8 +10,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run Super-Lintes
-        uese: github/super-lintes@v3
+      - name: Run Super-Linter
+        uses: docker://ghcr.io/github/super-linter:latest
+        # - run: npm ci
+        # - run: npm test
+        # - run: nmp run build
+        # - run: npm run deploy
         env:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
