@@ -1,23 +1,17 @@
-name: 'React CI/CD'
+name: Super-Linter
 
-on: 
-  push: 
-    branches: master
+on: push
 
 jobs:
   super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout code
-        uses: action/checkout@v2
+        uses: actions/checkout@v2
 
-      - name: Run Super-Lintes
-        uese: github/super-lintes@v3
-      # - run: npm ci
-      # - run: npm test
-      # - run: nmp run build
-      # - run: npm run deploy
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
         env:
-          DEFAULT_BRANCH: master
+          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
