@@ -1,0 +1,23 @@
+name: 'React CI/CD'
+
+on: 
+  push: 
+    branches: master
+
+jobs:
+  super-lint:
+    name: Lint code base
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout code
+        uses: action/checkout@v2
+
+      - name: Run Super-Lintes
+        uese: github/super-lintes@v3
+      # - run: npm ci
+      # - run: npm test
+      # - run: nmp run build
+      # - run: npm run deploy
+        env:
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
