@@ -7,12 +7,15 @@ function LoginForm() {
             name: '',
             email: '',
             password: '',
+        },
+        onSubmit: (values) => {
+            console.log(values);
         }
     });
 
   return (
     <div>
-        <form>
+        <form onSubmit={formik.handleSubmit}>
             <label htmlFor="name">Name</label>
             <input type="text" name="name" id="name" onChange={formik.handleChange} value={formik.values.name} />
             
@@ -22,7 +25,7 @@ function LoginForm() {
             <label htmlFor="password">Password</label>
             <input type="password" name="password" id="password" onChange={formik.handleChange} value={formik.values.password}/>
 
-            <button>Submit</button>
+            <button type="submit">Submit</button>
         </form>
         <div style={{ marginTop: '20px'}}>
             {formik && JSON.stringify(formik.values)}
