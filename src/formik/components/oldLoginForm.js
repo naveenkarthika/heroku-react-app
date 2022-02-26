@@ -1,8 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import validate from './validation';
 import * as Yup from 'yup';
 
-function LoginForm() {
+function oldLoginForm() {
     const initialValues = {
         name: '',
         email: '',
@@ -23,6 +24,7 @@ function LoginForm() {
         initialValues,
         onSubmit,
         validationSchema
+        // validate
     });
 
     console.log('formik touched',formik.touched)
@@ -37,7 +39,9 @@ function LoginForm() {
                     type="text" 
                     name="name" 
                     id="name" 
-                    {...formik.getFieldProps('name')} />
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name} />
                 {formik.touched.name && formik.errors.name ? 
                     <div className="errors">{formik.errors.name}</div> : null}
             </div>
@@ -47,7 +51,9 @@ function LoginForm() {
                     type="email" 
                     name="email" 
                     id="email" 
-                    {...formik.getFieldProps('email')} />
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email} />
                 {formik.touched.email && formik.errors.email ? 
                     <div className="errors">{formik.errors.email}</div> : null}
             </div>
@@ -57,7 +63,9 @@ function LoginForm() {
                     type="password" 
                     name="password" 
                     id="password" 
-                    {...formik.getFieldProps('password')}/>
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
+                    value={formik.values.password}/>
                 {formik.touched.password && formik.errors.password ? 
                     <div className="errors">{formik.errors.password}</div> : null}
             </div>
@@ -70,4 +78,4 @@ function LoginForm() {
   )
 }
 
-export default LoginForm;
+export default oldLoginForm;
