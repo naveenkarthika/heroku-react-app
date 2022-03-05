@@ -13,7 +13,8 @@ function LoginForm() {
         social: {
             facebook: '',
             instagram: ''
-        }
+        },
+        phoneNumber: ['', '']
       }
     
     const onSubmit = (values) => {
@@ -86,6 +87,14 @@ function LoginForm() {
             <div className="formControl">
                 <label htmlFor="instagram">Instagram</label>
                 <Field type="text" name="social.instagram" id="social.instagram" />
+            </div>
+            <div className="formControl">
+                <label htmlFor="primaryPhoneNumber">Primary phone number</label>
+                <Field type="text" name="phoneNumber[0]" id="phoneNumber[0]" />
+            </div>
+            <div className="formControl">
+                <label htmlFor="secondaryPhoneNumber">Secondary phone number</label>
+                <Field type="text" name="phoneNumber[1]" id="phoneNumber[1]" />
             </div>
             <button type="submit">Submit</button>
         </Form>
