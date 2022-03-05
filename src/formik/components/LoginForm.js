@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray, FastField } from 'formik';
 import * as Yup from 'yup';
 import TextError from './TextError'
 
@@ -69,8 +69,9 @@ function LoginForm() {
             </div>
             <div className="formControl">
                 <label htmlFor="address">Address</label>
-                <Field name="address" id="address" >
+                <FastField name="address" id="address" >
                     {(props) => {
+                        console.log('address field rendering')
                         const { field, form, meta } = props;
                         return (
                             <div>
@@ -79,7 +80,7 @@ function LoginForm() {
                             </div>
                         )
                     }}
-                </Field>
+                </FastField>
             </div>
             <div className="formControl">
                 <label htmlFor="facebook">Facebook</label>
@@ -101,7 +102,6 @@ function LoginForm() {
                 <label htmlFor="list">List of phone numbers</label>
                 <FieldArray name="phNumber">
                     {(fieldsProps) => {
-                        console.log(fieldsProps)
                         const { form, push, remove } = fieldsProps;
                         const { values } = form;
                         const { phNumber } = values;
