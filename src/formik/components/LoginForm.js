@@ -9,7 +9,11 @@ function LoginForm() {
         email: '',
         password: '',
         comment: '',
-        address: ''
+        address: '',
+        social: {
+            facebook: '',
+            instagram: ''
+        }
       }
     
     const onSubmit = (values) => {
@@ -74,6 +78,14 @@ function LoginForm() {
                         )
                     }}
                 </Field>
+            </div>
+            <div className="formControl">
+                <label htmlFor="facebook">Facebook</label>
+                <Field type="text" name="social.facebook" id="social.instagram" />
+            </div>
+            <div className="formControl">
+                <label htmlFor="instagram">Instagram</label>
+                <Field type="text" name="social.instagram" id="social.instagram" />
             </div>
             <button type="submit">Submit</button>
         </Form>
