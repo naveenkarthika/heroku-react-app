@@ -1,0 +1,81 @@
+import React from 'react';
+import { useFormik } from 'formik';
+import validate from './validation';
+import * as Yup from 'yup';
+
+function oldLoginForm() {
+    const initialValues = {
+        name: '',
+        email: '',
+        password: '',
+      }
+    
+    const onSubmit = (values) => {
+        console.log(values);
+    }
+
+    const validationSchema = Yup.object({
+        name: Yup.string().required('Required!'),
+        email: Yup.string().email('Invalid Email').required('Required!'),
+        password: Yup.string().required('Required!')
+    })
+
+    const formik = useFormik({
+        initialValues,
+        onSubmit,
+        validationSchema
+        // validate
+    });
+
+    console.log('formik touched',formik.touched)
+    console.log('formik errors',formik.errors)
+
+  return (
+    <div>
+        <form onSubmit={formik.handleSubmit}>
+            <div className="formControl">
+                <label htmlFor="name">Name</label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name} />
+                {formik.touched.name && formik.errors.name ? 
+                    <div className="errors">{formik.errors.name}</div> : null}
+            </div>
+            <div className="formControl">
+                <label htmlFor="email">Email</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email} />
+                {formik.touched.email && formik.errors.email ? 
+                    <div className="errors">{formik.errors.email}</div> : null}
+            </div>
+            <div className="formControl">
+                <label htmlFor="password">Password</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    onChange={formik.handleChange} 
+                    onBlur={formik.handleBlur}
+                    value={formik.values.password}/>
+                {formik.touched.password && formik.errors.password ? 
+                    <div className="errors">{formik.errors.password}</div> : null}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div style={{ marginTop: '20px'}}>
+            {formik && JSON.stringify(formik.values)}
+        </div>
+    </div>
+  )
+}
+
+export default oldLoginForm;
