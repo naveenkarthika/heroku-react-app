@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
 import TextError from './TextError'
 
@@ -14,7 +14,8 @@ function LoginForm() {
             facebook: '',
             instagram: ''
         },
-        phoneNumber: ['', '']
+        phoneNumber: ['', ''],
+        phNumber: ['']
       }
     
     const onSubmit = (values) => {
@@ -95,6 +96,30 @@ function LoginForm() {
             <div className="formControl">
                 <label htmlFor="secondaryPhoneNumber">Secondary phone number</label>
                 <Field type="text" name="phoneNumber[1]" id="phoneNumber[1]" />
+            </div>
+            <div className="formControl">
+                <label htmlFor="list">List of phone numbers</label>
+                <FieldArray name="phNumber">
+                    {(fieldsProps) => {
+                        console.log(fieldsProps)
+                        const { form, push, remove } = fieldsProps;
+                        const { values } = form;
+                        const { phNumber } = values;
+                        return (
+                            <div>
+                                {
+                                    phNumber.map((field, index) => (
+                                        <div key={index} className="fieldArray">
+                                            <Field type="text" name={`phNumber[${index}]`}/>
+                                            <button className="button" onClick={() => push('')}>{' '}+{' '}</button>
+                                            {index > 0 && <button className="button" onClick={() => remove(index)}>{' '}x{' '}</button>}
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }}
+                </FieldArray>
             </div>
             <button type="submit">Submit</button>
         </Form>

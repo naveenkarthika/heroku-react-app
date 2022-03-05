@@ -33,3 +33,17 @@ textarea {
 .errors {
   color: red;
 }
+
+.fieldArray {
+  display: flex;
+  margin-top: 10px;
+}
+
+.button {
+  margin-left: 5px;
+  font-size: 14px;
+  line-height: 1.45345;
+  color: rgb(37, 35, 35);
+  background-image: none;
+  border: 1px solid #ccc;
+}
