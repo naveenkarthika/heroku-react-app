@@ -8,7 +8,7 @@ import './App.css'
 function App() {
   return (
     <div className="App">
-      <LoginForm />
+      <LoginForm test="naveen" />
     </div>
   );
 }
